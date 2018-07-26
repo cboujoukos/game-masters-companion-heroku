@@ -69,8 +69,10 @@ body {
 }
 
 #display {
-  height:205px;
-  padding:4px;
+  text-align: justify;
+  height:25vh;
+  padding:10px;
+  padding-top: 20px;
   border:1px solid black;
   border-radius: 5px;
   background-image: url("../img/paper.jpg");
@@ -190,25 +192,34 @@ img, video, audio, iframe, table, form {
 a {
   color: black;
   text-decoration: underline;
+  font-weight: normal;
 }
 
 .navbar a {
   text-decoration: none;
+  font-weight: bold;
+}
+
+[class*="backdrop"] {
+  border:1px solid darkslategrey;
+  border-radius: 5px;
+  /* background-color: white; */
+  min-height: 200px;
 }
 
 .backdrop-red {
-  background-color: rgba(140, 7, 14, 0.1);
+  background-color: rgba(140, 7, 14, 0.2);
   min-height: 200px;
 }
 
 .backdrop-blue {
-  background-color: rgba(16, 7, 140, 0.1);
+  background-color: rgba(16, 7, 140, 0.2);
   min-height: 200px;
 }
 
 .backdrop-grey {
   /*font: bold 1.5em 'Arial Rounded MT Bold', Helvetica, Arial, sans-serif;*/
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   min-height: 200px;
 }
 
