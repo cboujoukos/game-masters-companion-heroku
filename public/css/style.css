@@ -1,0 +1,254 @@
+* {
+  font: bold 1em 'Arial Rounded MT Bold', Helvetica, Arial, sans-serif;
+  /*font: bold 1em "Comic Sans MS", cursive, sans-serif;*/
+}
+/* //////// HEADER //////// */
+.fixed-header {
+  background-image: url("../img/congruent_outline.png");
+}
+
+#quill {
+  display: inline;
+  width:35px;
+  height: 54px;
+  float: left;
+}
+
+#page-title {
+  font-family: 'Macondo', cursive;
+  color: #f2f2f2;
+  float: left;
+}
+
+/* /////// GENERAL //////// */
+html {
+  height: 100%;
+}
+
+.ham {
+  height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: rgba(209,209,209,1);
+background: -moz-linear-gradient(top, rgba(209,209,209,1) 0%, rgba(255,255,255,1) 11%, rgba(254,254,254,1) 64%, rgba(209,209,209,1) 94%, rgba(209,209,209,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(209,209,209,1)), color-stop(11%, rgba(255,255,255,1)), color-stop(64%, rgba(254,254,254,1)), color-stop(94%, rgba(209,209,209,1)), color-stop(100%, rgba(209,209,209,1)));
+background: -webkit-linear-gradient(top, rgba(209,209,209,1) 0%, rgba(255,255,255,1) 11%, rgba(254,254,254,1) 64%, rgba(209,209,209,1) 94%, rgba(209,209,209,1) 100%);
+background: -o-linear-gradient(top, rgba(209,209,209,1) 0%, rgba(255,255,255,1) 11%, rgba(254,254,254,1) 64%, rgba(209,209,209,1) 94%, rgba(209,209,209,1) 100%);
+background: -ms-linear-gradient(top, rgba(209,209,209,1) 0%, rgba(255,255,255,1) 11%, rgba(254,254,254,1) 64%, rgba(209,209,209,1) 94%, rgba(209,209,209,1) 100%);
+background: linear-gradient(to bottom, rgba(209,209,209,1) 0%, rgba(255,255,255,1) 11%, rgba(254,254,254,1) 64%, rgba(209,209,209,1) 94%, rgba(209,209,209,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1d1d1', endColorstr='#d1d1d1', GradientType=0 );
+}
+
+body {
+  height: 100%;
+    margin: 0;
+
+    background-image: url("../img/concrete_seamless.png");
+}
+
+.title {
+  font-size: 2.5em;
+  font-family: 'Macondo', cursive;
+}
+
+.border-left {
+  border-left: : 1px solid black;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.emphasis {
+  font-weight: bold;
+}
+
+.right-align {
+  text-align: right;
+}
+
+#display {
+  height:205px;
+  padding:4px;
+  border:1px solid black;
+  border-radius: 5px;
+  background-image: url("../img/paper.jpg");
+  /* background-color: antiquewhite; */
+  font-size: 1.2em;
+  overflow:auto;
+  /*font:16px/26px Athelas, Garamond, Serif;*/
+}
+
+.flash-error {
+  background-color: rgba(255, 7, 14, 0.7);
+  font-family: serif;
+  padding:5px;
+  width: max-content;
+  z-index: 1000;
+}
+
+dt.campaign-name a {
+  font-size: 1.5em;
+}
+
+
+/* color: rgb(91, 154, 255) */
+
+
+/*/////// MEDIA ///////*/
+
+img, video, audio, iframe, table, form {
+  width: 100%; /* IE */
+  max-width: 100%; /* FF, Safari, Chrome */
+}
+
+/*/////// MEDIA QUERIES ///////*/
+
+@media (min-width: 768px) {
+  .row.equal-height {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 991px) {
+  .scroll-log {
+    margin-top: 20px;
+    margin-left: -30px;
+    display: inline-grid;
+  }
+}
+
+@media (max-width: 991px) {
+  .scroll-log.full {
+    margin: 20px;
+    display: inline-grid;
+  }
+}
+
+@media (max-width: 991px) {
+  .hidden-xs {
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  div[class*="backdrop"] {
+    margin-top: 10px;
+    padding-top: 5px;
+  }
+}
+
+@media (max-width:991px) {
+  img {
+    display:block;
+    margin:0;
+  }
+}
+
+
+/*/////// LAYOUT STYLES ///////*/
+
+
+.row {
+  margin-bottom: 20px;
+}
+
+.boxit {
+  padding: 10px;
+  padding-left: 20px;
+  border: 1px solid red;
+  background-image: url("../img/concrete_seamless.png");
+}
+/* background-image: url("../img/hexellence.png"); */
+
+.thin_box {
+  padding: 20px 30px;
+  background-image: url("../img/paper.jpg");
+  background-size: cover;
+  -webkit-background-origin:border;
+}
+
+.scroll-log {
+  display: inline-block;
+  min-height: 400px;
+  font-style: italic;
+  font-family: 'Nothing You Could Do', cursive;
+  padding: 20px;
+  background-image: url("../img/paper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-background-origin:border;
+}
+
+.scroll-log h3 a {
+  font-family: 'Nothing You Could Do', cursive;
+  font-weight: bold
+}
+
+a {
+  color: black;
+  text-decoration: underline;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.backdrop-red {
+  background-color: rgba(140, 7, 14, 0.1);
+  min-height: 200px;
+}
+
+.backdrop-blue {
+  background-color: rgba(16, 7, 140, 0.1);
+  min-height: 200px;
+}
+
+.backdrop-grey {
+  /*font: bold 1.5em 'Arial Rounded MT Bold', Helvetica, Arial, sans-serif;*/
+  background-color: rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+}
+
+.form-backdrop {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.padded-backdrop {
+  padding: 20px;
+  background-color: rgba(140, 7, 14, 0.1);
+}
+
+button {
+  background-color: aliceblue;
+  border-radius: 4px;
+  padding: 10px;
+  border-style: none;
+  border: 1px solid black;
+}
+
+
+/*h3, h4, h5, h6 {
+  font: bold 1.25em 'Arial Rounded MT Bold', Helvetica, Arial, sans-serif;
+}
+
+.shrink {
+  font: bold 0.9em 'Arial Rounded MT Bold', Helvetica, Arial, sans-serif;
+}*/
+
+/* ////// FIXES /////*/
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.equal-height {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}

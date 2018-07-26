@@ -1,0 +1,35 @@
+<% content_for :title do %>
+  City Encounter Generator
+<% end %>
+<% if logged_in? %>
+  <% content_for :nav_dropdown do %>
+    <li class="dropdown">
+      <a data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">Campaigns  <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <% current_user.campaigns.each do |campaign| %>
+          <li><a href="/campaigns/<%= campaign.slug %>"><%= campaign.name %></a></li>
+          <% end %>
+          <li role="separator" class="divider"></li>
+          <li><a href="/campaigns/new">New Campaign</a></li>
+        </ul>
+      </li>
+  <% end %>
+<% end %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="title">
+        Random City Encounter Generator
+      </h1>
+      <p>Playing a d20 campaign in a fantasy setting? We know how you roll. Our random encounter generator will provide you with the base content for a combat or non-combat city encounter running approximately 30 minutes. Click generate encounter below to see where your adventure will take you!  </p>
+      <div id="display"> </div>
+      <br>
+      <button onclick="generate()">Generate</button>
+    </div>
+    <div class="col-md-4">
+      <img src="img/d20.png" class="hidden-sm hidden-xs img-responsive" alt="">
+    </div>
+  </div>
+</div>

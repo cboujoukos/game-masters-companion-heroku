@@ -1,0 +1,48 @@
+<% content_for :title do %>
+  Game Master's Companion - Edit Campaign
+<% end %>
+<% content_for :nav_dropdown do %>
+  <li class="dropdown">
+    <a data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">Campaigns  <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% current_user.campaigns.each do |campaign| %>
+        <li><a href="/campaigns/<%= campaign.slug %>"><%= campaign.name %></a></li>
+        <% end %>
+        <li role="separator" class="divider"></li>
+        <li><a href="/campaigns/new">New Campaign</a></li>
+      </ul>
+    </li>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6 form-backdrop">
+    <form class="" action="/campaigns/<%= @campaign.slug %>" method="post">
+      <input type="hidden" name="_method" id="hidden" value="PATCH">
+      <h2>Edit campaign</h2>
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" name="name" id="campaign_name"    value="<%=  @campaign.name %>">
+      </div>
+      <div class="form-group">
+        <label for="Setting">Setting</label>
+        <input type="text" class="form-control" name="setting" id="campaign_setting"      value="<%= @campaign.setting %>">
+      </div>
+      <div class="form-group">
+        <label for="Notes">Notes</label>
+        <br>
+        <textarea name="notes" class="form-control" rows="8" style="min-width: 100%"><%= @campaign.notes %></textarea>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-md-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+      <div class="col-md-2">
+        <p><a href="/campaigns/<%= @campaign.slug %>">Cancel</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <img src="/img/lighthouse-2398832_1920.jpg" class="hidden-xs img-responsive" alt="">
+  </div>
+</div>

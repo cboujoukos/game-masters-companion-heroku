@@ -1,0 +1,160 @@
+<% content_for :title do %>
+  Game Master's Companion - Encounter
+<% end %>
+<% content_for :nav_dropdown do %>
+  <li class="dropdown">
+    <a data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">Campaigns  <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% current_user.campaigns.each do |campaign| %>
+        <li><a href="/campaigns/<%= campaign.slug %>"><%= campaign.name %></a></li>
+        <% end %>
+        <li role="separator" class="divider"></li>
+        <li><a href="/campaigns/new">New Campaign</a></li>
+      </ul>
+    </li>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="title"><%= @encounter.name %></h3>
+    <h4>&ensp;-<%= @encounter.notes %></h4>
+    <h4>Loot: <%= @encounter.loot %></h4>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12 backdrop-blue">
+    <h4>Party Members</h4>
+    <span class="table-responsive">
+      <table class="table table-bordered">
+        <tr>
+          <% @players.each.with_index do |char, i| %>
+            <th><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></th>
+          <% end %>
+        </tr>
+        <tr>
+          <% @players.each.with_index do |char, i| %>
+            <td>AC: <%= char.ac %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <% @players.each.with_index do |char, i| %>
+            <td>Perception: <%= char.passive_perception %></td>
+          <% end %>
+        </tr>
+      </table>
+    </span>
+    <br>
+  </div>
+</div>
+<div class="row">
+  <% if @npcs.length > 0 %>
+  <div class="col-md-4">
+    <div class="col-md-12 backdrop-blue"><h4>NPCs</h4>
+    <% @npcs.each do |npc| %>
+      <h5 class="emphasis"><a href="/campaigns/<%= @campaign.slug %>/characters/<%= npc.id %>"><%= npc.name %></a></h5>
+      <div class="row">
+        <div class="col-xs-6">
+          <p>AC: <%= npc.ac %></p>
+        </div>
+        <div class="col-xs-6">
+          <p>HP: <%= npc.hp %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Stats: <%= npc.stats %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <tr>
+              <% npc.attacks.each do |attack| %>
+                <th><%= attack.name %></th>
+              <% end %>
+            </tr>
+            <tr>
+              <% npc.attacks.each do |attack| %>
+                <td>Att. Bonus: <%= attack.to_hit %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <% npc.attacks.each do |attack| %>
+                <td>Damage: <%= attack.damage %></td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %></div>
+  </div>
+  <% end %>
+  <div class="col-md-<%= @npcs.length > 0 ? 8 : 12 %>">
+    <div class="col-md-12 backdrop-red"><h4>Enemies</h4>
+    <% @enemies.each do |enemy| %>
+      <div class="row">
+        <div class="col-sm-9">
+          <h5 class="emphasis"><a href="/campaigns/<%= @campaign.slug %>/characters/<%= enemy.id %>"><%= enemy.name %></a></h5>
+        </div>
+        <div class="col-sm-3">
+          <% if enemy.cr != "" && enemy.cr != nil %>
+            <h5>CR: <%= enemy.cr %></h5>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <p>AC: <%= enemy.ac %></p>
+        </div>
+        <div class="col-sm-4">
+          <p>HP: <%= enemy.hp %></p>
+        </div>
+        <div class="col-sm-4">
+          <p>Perc: <%= enemy.passive_perception %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Stats: <%= enemy.stats %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Attacks:</p>
+          <table class="table table-bordered">
+            <tr>
+              <% enemy.attacks.each do |attack| %>
+                <th><%= attack.name %></th>
+              <% end %>
+            </tr>
+            <tr>
+              <% enemy.attacks.each do |attack| %>
+                <td>Att. Bonus: <%= attack.to_hit %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <% enemy.attacks.each do |attack| %>
+                <td>Damage: <%= attack.damage %></td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %></div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-md-4">
+    <h4> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>/edit_encounter">Edit Encounter</a> </h4>
+    <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
+  </div>
+  <div class="col-md-2 col-md-offset-6">
+    <form onsubmit="return confirm('Are you sure you want to delete <%= @encounter.name %>?')" action="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>/delete" method="post">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-warning">Delete Encounter</button>
+        </form>
+  </div>
+</div>

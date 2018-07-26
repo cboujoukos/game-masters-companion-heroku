@@ -1,0 +1,78 @@
+<% content_for :title do %>
+  Game Master's Companion - Home
+<% end %>
+<% content_for :nav_dropdown do %>
+  <li class="dropdown">
+    <a data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">Campaigns  <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% current_user.campaigns.each do |campaign| %>
+        <li><a href="/campaigns/<%= campaign.slug %>"><%= campaign.name %></a></li>
+        <% end %>
+        <li role="separator" class="divider"></li>
+        <li><a href="/campaigns/new">New Campaign</a></li>
+      </ul>
+    </li>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Welcome!</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="col-md-12 backdrop backdrop-grey">
+        <h4 class="shrink"> Hi, <%= @user.username %>! Welcome to the Game Master’s Companion. Within these digital walls, you’ll discover a campaign manager that allows easy access to all of the player, NPC, and encounter info you need in any given session. Create, maintain, and explore your very own worlds with this customizable GM tool. Track your encounters, or check out the Random Encounter Generator for inspiration.
+        </h4>
+        <h4 class="shrink">
+          To get started, create a new campaign or dive into one of your pre-existing worlds!
+        </h4>
+
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <img src="/img/arcane-book.png" class="img-responsive" alt="">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-12 backdrop backdrop-blue">
+        <h2>Your Campaigns</h2>
+        <% if current_user.campaigns.length > 0 %>
+          <dl><% current_user.campaigns.reverse.each do |c| %>
+            <dt class="campaign-name"><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
+            <dd><%= c.notes %></dd>
+            <br>
+            <% end %>
+          </dl>
+          <% else %>
+          <p>You dont have any campaigns yet<p>
+          <% end %>
+        <h3><a href="/campaigns/new">Start a New Campaign!</a></h3>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="col-md-12 backdrop backdrop-blue">
+        <h2 class="right-align">Recent Encounters</h2>
+        <% if current_user.encounters.length > 0 %>
+          <dl><% current_user.encounters.reverse[0..3].each do |enc| %>
+            <dt><a href="/campaigns/<%= enc.campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
+            <dd>Campaign: <%= enc.campaign.name %></dd>
+            <dd>- <%= enc.notes %></dd>
+            <br>
+            <% end %>
+          </dl>
+        <% else %>
+          <p>You have not created any encounters yet<p>
+        <% end %>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
