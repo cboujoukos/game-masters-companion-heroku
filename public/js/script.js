@@ -64,7 +64,7 @@ function generate() {
   } else if (randomHook == 2) {
    document.getElementById('display').innerHTML = `${randomize(hooks2)} ${randomize(encounters2)}`
   } else if (randomHook == 3){
-    document.getElementById('display').innerHTML = `${randomize(hooks1)} ${randomize(encounters1)}`
+    document.getElementById('display').innerHTML = `${randomize(hooks3)} ${randomize(encounters3)}`
   } else {
     document.getElementById('display').innerHTML = `${randomize(fullHooks)}`
   }
