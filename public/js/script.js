@@ -56,7 +56,7 @@ function generate() {
     ];
 
 
-  var randomHook = Math.floor(Math.random() * 3);
+  var randomHook = Math.floor(Math.random() * 3) + 1;
   /* This line selects one hook at random.
   The rest of the functions matches the hook with a well matched encounter*/
   if (randomHook == 1) {
